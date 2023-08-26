@@ -10,6 +10,7 @@ import lombok.ToString;
 public enum ErrorCode {
 
     NotFoundItem("IT-NOF", "item not found"),
+    NotFoundPermission("PER-NOF", "permission not found"),
     AccessDenied("NOT-AUTH","You don't have permission to create this item.");
     
     private String code;

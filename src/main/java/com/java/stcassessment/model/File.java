@@ -1,15 +1,16 @@
 package com.java.stcassessment.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -17,7 +18,8 @@ import lombok.ToString;
 @Setter
 @ToString
 @Entity
-@Table(name = "file")
+@Table(name = "files")
+@NoArgsConstructor
 public class File {
 
     @Id
@@ -25,14 +27,14 @@ public class File {
     private Integer id;
 
     @Lob
-    private byte[] binaryData;
+    private byte[] binaryFileData;
 
     @OneToOne
     @JoinColumn(name = "item_id")
     private Item item;
 
     public File(byte[] fileContent, Item file) {
-        this.binaryData = fileContent;
+        this.binaryFileData = fileContent;
         this.item = file;
     }
 

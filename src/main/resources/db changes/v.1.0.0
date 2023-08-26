@@ -1,0 +1,29 @@
+-- Create the Permission Group table
+CREATE TABLE permission_group (
+    id SERIAL PRIMARY KEY,
+    group_name VARCHAR(255) NOT NULL
+);
+
+-- Create the Item table
+CREATE TABLE item (
+    id SERIAL PRIMARY KEY,
+    type VARCHAR(20) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    permission_group_id INTEGER REFERENCES permission_group(id)
+);
+
+
+-- Create the File table
+CREATE TABLE files (
+    id SERIAL PRIMARY KEY,
+    binary_file_data BIGINT NOT NULL,
+    item_id INTEGER REFERENCES item(id)
+);
+
+-- Create the Permission table
+CREATE TABLE permission (
+    id SERIAL PRIMARY KEY,
+    user_email VARCHAR(255) NOT NULL,
+    permission_level VARCHAR(20) NOT NULL,
+    group_id INTEGER REFERENCES permission_group(id)
+);
